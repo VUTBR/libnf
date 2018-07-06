@@ -48,7 +48,7 @@
 #include "nfx.h"
 #include "nfnet.h"
 #include "bookkeeper.h"
-#include "nfxstat.h"
+//#include "nfxstat.h" commented out for >= 1.26
 #include "nf_common.h"
 #include "rbtree.h"
 #include "nftree.h"
@@ -579,7 +579,7 @@ void lnf_update_exporter_stats(lnf_file_t *lnf_file, nffile_t *nffile) {
 		exporter = exporter->next;
 	}
 
-	AppendToBuffer(lnf_file->nffile, (void *)&estats, estats->header.size);
+	AppendToBuffer(lnf_file->nffile, (void *)estats, estats->header.size);
 
 	free(estats);
 
@@ -951,7 +951,7 @@ int map_id = 0;
 fileds: LNF_FLD_EXPORTER_ID LNF_FLD_EXPORTER_IP 
 returns - internal exporter ID (sysid)
 
-Exporters are organizes in linked lst. If the ID and IP is not 
+Exporters are organized in linked lst. If the ID and IP is not 
 found in the list the new entry is created */
 generic_exporter_t* lnf_lookup_exporter(lnf_file_t *lnf_file, lnf_rec_t *lnf_rec) {
 
@@ -993,13 +993,13 @@ generic_exporter_t* lnf_lookup_exporter(lnf_file_t *lnf_file, lnf_rec_t *lnf_rec
 
 	/* assign sysid */
 	lnf_file->num_exporters++;
-	exporter->info.sysid = lnf_file->num_exporters;
+	exporter->info.sysid = lnf_file->num_exporters - 1; /* numbering from exprters starts from 0 */
 
 	/* additional exporter_info_record_t fields */
 	exporter->info.version = lnf_rec->exporter->info.version; 
 
-	ip.v6[0] = htonll(exporter->info.ip.v6[0]);
-	ip.v6[1] = htonll(exporter->info.ip.v6[1]);
+	ip.V6[0] = htonll(exporter->info.ip.V6[0]);
+	ip.V6[1] = htonll(exporter->info.ip.V6[1]);
 
 	if (IN6_IS_ADDR_V4COMPAT((struct in6_addr *)&ip)) {
 		exporter->info.sa_family = AF_INET;

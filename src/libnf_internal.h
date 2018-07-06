@@ -42,7 +42,7 @@
 #include <rbtree.h>
 #include <nftree.h>
 #include <nfx.h>
-#include <nfxstat.h>
+//#include <nfxstat.h> // commented out for >= 1.26
 #include <bookkeeper.h>
 #include <collector.h>
 #ifdef LNF_THREADS
@@ -153,6 +153,8 @@ typedef struct lnf_file_s {
 
 
 extension_map_t * lnf_lookup_map(lnf_file_t *lnf_file, bit_array_t *ext );
+generic_exporter_t * lnf_lookup_exporter(lnf_file_t *lnf_file, lnf_rec_t *lnf_rec);
+void lnf_update_exporter_stats(lnf_file_t *lnf_file, nffile_t *nffile);
 int lnf_read_record(lnf_file_t *lnf_file, lnf_rec_t *lnf_rec);
 
 /* nfdump uses LogError - we map it to lnf_seterror */
