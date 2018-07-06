@@ -16,6 +16,12 @@ $DS{'v4_basic_txt'} = {
 	'tcpflags' => '27',
 	'flags' => '27', # from 1.26
 
+	'exporterversion' => '0', # from 1.26
+	'sampleinterval' => '0', # from 1.26
+	'samplermode' => '0', # from 1.26
+	'exporterid' => '0', # from 1.26
+	'samplerid' => '0', # from 1.26
+
 	'srcip' => '147.229.3.135',
 	'dstip' => '10.255.5.6',
 	'inetfamily' => 'ipv4',
@@ -94,6 +100,12 @@ $DS{'v4_txt'} = {
    	'engine-id' => '0', # from 1.25
    	'systype' => '0',
    	'engine-type' => '0', # from 1.25
+
+	'exporterversion' => '0', # from 1.26
+	'sampleinterval' => '0', # from 1.26
+	'samplermode' => '0', # from 1.26
+	'exporterid' => '0', # from 1.26
+	'samplerid' => '0', # from 1.26
 
 	'cl' => '100', 
 	'sl' => '200',

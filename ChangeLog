@@ -2,6 +2,11 @@ Revision history for C and Perl extension of nfdump.
 
 1.26 2018-06-xx
 	- updated to nfdump 1.6.17
+	- new calculated fields: net, srcnet, dstnet
+	  calculated based on ip and netmask
+	- new field alias: pkts -> packets, outpkts -> outpackets, 
+	  routerip -> router, nextip -> nexthp
+	- new fields: engine_id, engine_type, flags 
 	- c: better processing of list of exporters 
 	- c: ringbuf support to handle data beween libnf instancec in real time 
 	- c: new functions lnf_ring_init, lnf_ring_info, lnf_ring_read,
